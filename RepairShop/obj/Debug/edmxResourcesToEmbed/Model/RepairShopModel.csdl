@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RepairShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Application">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Equipment_type_ID" Type="Int32" Nullable="false" />
+    <Property Name="Application_status_ID" Type="Int32" Nullable="false" />
+    <Property Name="Performer_ID" Type="Int32" Nullable="false" />
+    <Property Name="Issue_ID" Type="Int32" Nullable="false" />
+    <Property Name="Client_ID" Type="Int32" Nullable="false" />
+    <Property Name="Priority_type_ID" Type="Int32" Nullable="false" />
+    <Property Name="Equipment_serial_number" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Application_statuses" Relationship="Self.FK__Applicati__Appli__5165187F" FromRole="Application" ToRole="Application_statuses" />
+    <NavigationProperty Name="Client" Relationship="Self.FK__Applicati__Clien__5441852A" FromRole="Application" ToRole="Client" />
+    <NavigationProperty Name="Equipment_type" Relationship="Self.FK__Applicati__Equip__4F7CD00D" FromRole="Application" ToRole="Equipment_type" />
+    <NavigationProperty Name="Issue" Relationship="Self.FK__Applicati__Issue__534D60F1" FromRole="Application" ToRole="Issue" />
+    <NavigationProperty Name="Performer" Relationship="Self.FK__Applicati__Perfo__52593CB8" FromRole="Application" ToRole="Performer" />
+    <NavigationProperty Name="Priority_type" Relationship="Self.FK__Applicati__Prior__5535A963" FromRole="Application" ToRole="Priority_type" />
+    <NavigationProperty Name="Report" Relationship="Self.FK__Report__Applicat__60A75C0F" FromRole="Application" ToRole="Report" />
+  </EntityType>
+  <EntityType Name="Application_statuses">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Application" Relationship="Self.FK__Applicati__Appli__5165187F" FromRole="Application_statuses" ToRole="Application" />
+  </EntityType>
+  <EntityType Name="Assistance">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Assistance_type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Report" Relationship="Self.FK__Report__Assistan__4316F928" FromRole="Assistance" ToRole="Report" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="First_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Surname_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Last_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Tel" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Application" Relationship="Self.FK__Applicati__Clien__5441852A" FromRole="Client" ToRole="Application" />
+  </EntityType>
+  <EntityType Name="Equipment_type">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Application" Relationship="Self.FK__Applicati__Equip__4F7CD00D" FromRole="Equipment_type" ToRole="Application" />
+  </EntityType>
+  <EntityType Name="Issue">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Application" Relationship="Self.FK__Applicati__Issue__534D60F1" FromRole="Issue" ToRole="Application" />
+  </EntityType>
+  <EntityType Name="Performer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="First_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Surname_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Last_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Tel" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Application" Relationship="Self.FK__Applicati__Perfo__52593CB8" FromRole="Performer" ToRole="Application" />
+    <NavigationProperty Name="Spare_part_order" Relationship="Self.FK__Spare_par__Perfo__47DBAE45" FromRole="Performer" ToRole="Spare_part_order" />
+  </EntityType>
+  <EntityType Name="Priority_type">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Application" Relationship="Self.FK__Applicati__Prior__5535A963" FromRole="Priority_type" ToRole="Application" />
+  </EntityType>
+  <EntityType Name="Report">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Application" Type="Int32" Nullable="false" />
+    <Property Name="Assistance" Type="Int32" Nullable="false" />
+    <Property Name="Reason_of_malfunction" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Resources_price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Job_price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Repair_start_time" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Repair_finish_time" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Application1" Relationship="Self.FK__Report__Applicat__60A75C0F" FromRole="Report" ToRole="Application" />
+    <NavigationProperty Name="Assistance1" Relationship="Self.FK__Report__Assistan__4316F928" FromRole="Report" ToRole="Assistance" />
+    <NavigationProperty Name="Report_Spare_parts" Relationship="Self.FK__Report_Sp__Repor__4AB81AF0" FromRole="Report" ToRole="Report_Spare_parts" />
+  </EntityType>
+  <EntityType Name="Report_Spare_parts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Report_ID" Type="Int32" Nullable="false" />
+    <Property Name="Spare_part_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Report" Relationship="Self.FK__Report_Sp__Repor__4AB81AF0" FromRole="Report_Spare_parts" ToRole="Report" />
+    <NavigationProperty Name="Spare_part_order" Relationship="Self.FK__Report_Sp__Spare__4CA06362" FromRole="Report_Spare_parts" ToRole="Spare_part_order" />
+  </EntityType>
+  <EntityType Name="Spare_part_order">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Performer_ID" Type="Int32" Nullable="false" />
+    <Property Name="Spare_part_type" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Spare_part_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Performer" Relationship="Self.FK__Spare_par__Perfo__47DBAE45" FromRole="Spare_part_order" ToRole="Performer" />
+    <NavigationProperty Name="Report_Spare_parts" Relationship="Self.FK__Report_Sp__Spare__4CA06362" FromRole="Spare_part_order" ToRole="Report_Spare_parts" />
+  </EntityType>
+  <Association Name="FK__Applicati__Appli__5165187F">
+    <End Role="Application_statuses" Type="Self.Application_statuses" Multiplicity="1" />
+    <End Role="Application" Type="Self.Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Application_statuses">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="Application_status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Applicati__Clien__5441852A">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Application" Type="Self.Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="Client_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Applicati__Equip__4F7CD00D">
+    <End Role="Equipment_type" Type="Self.Equipment_type" Multiplicity="1" />
+    <End Role="Application" Type="Self.Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipment_type">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="Equipment_type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Applicati__Issue__534D60F1">
+    <End Role="Issue" Type="Self.Issue" Multiplicity="1" />
+    <End Role="Application" Type="Self.Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Issue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="Issue_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Applicati__Perfo__52593CB8">
+    <End Role="Performer" Type="Self.Performer" Multiplicity="1" />
+    <End Role="Application" Type="Self.Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Performer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="Performer_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Applicati__Prior__5535A963">
+    <End Role="Priority_type" Type="Self.Priority_type" Multiplicity="1" />
+    <End Role="Application" Type="Self.Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Priority_type">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="Priority_type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Report__Applicat__60A75C0F">
+    <End Role="Application" Type="Self.Application" Multiplicity="1" />
+    <End Role="Report" Type="Self.Report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Application">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Report">
+        <PropertyRef Name="Application" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Report__Assistan__4316F928">
+    <End Role="Assistance" Type="Self.Assistance" Multiplicity="1" />
+    <End Role="Report" Type="Self.Report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Assistance">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Report">
+        <PropertyRef Name="Assistance" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Spare_par__Perfo__47DBAE45">
+    <End Role="Performer" Type="Self.Performer" Multiplicity="1" />
+    <End Role="Spare_part_order" Type="Self.Spare_part_order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Performer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Spare_part_order">
+        <PropertyRef Name="Performer_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Report_Sp__Repor__4AB81AF0">
+    <End Role="Report" Type="Self.Report" Multiplicity="1" />
+    <End Role="Report_Spare_parts" Type="Self.Report_Spare_parts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Report">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Report_Spare_parts">
+        <PropertyRef Name="Report_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Report_Sp__Spare__4CA06362">
+    <End Role="Spare_part_order" Type="Self.Spare_part_order" Multiplicity="1" />
+    <End Role="Report_Spare_parts" Type="Self.Report_Spare_parts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Spare_part_order">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Report_Spare_parts">
+        <PropertyRef Name="Spare_part_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RepairShopEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Application" EntityType="Self.Application" />
+    <EntitySet Name="Application_statuses" EntityType="Self.Application_statuses" />
+    <EntitySet Name="Assistance" EntityType="Self.Assistance" />
+    <EntitySet Name="Client" EntityType="Self.Client" />
+    <EntitySet Name="Equipment_type" EntityType="Self.Equipment_type" />
+    <EntitySet Name="Issue" EntityType="Self.Issue" />
+    <EntitySet Name="Performer" EntityType="Self.Performer" />
+    <EntitySet Name="Priority_type" EntityType="Self.Priority_type" />
+    <EntitySet Name="Report" EntityType="Self.Report" />
+    <EntitySet Name="Report_Spare_parts" EntityType="Self.Report_Spare_parts" />
+    <EntitySet Name="Spare_part_order" EntityType="Self.Spare_part_order" />
+    <AssociationSet Name="FK__Applicati__Appli__5165187F" Association="Self.FK__Applicati__Appli__5165187F">
+      <End Role="Application_statuses" EntitySet="Application_statuses" />
+      <End Role="Application" EntitySet="Application" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Applicati__Clien__5441852A" Association="Self.FK__Applicati__Clien__5441852A">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Application" EntitySet="Application" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Applicati__Equip__4F7CD00D" Association="Self.FK__Applicati__Equip__4F7CD00D">
+      <End Role="Equipment_type" EntitySet="Equipment_type" />
+      <End Role="Application" EntitySet="Application" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Applicati__Issue__534D60F1" Association="Self.FK__Applicati__Issue__534D60F1">
+      <End Role="Issue" EntitySet="Issue" />
+      <End Role="Application" EntitySet="Application" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Applicati__Perfo__52593CB8" Association="Self.FK__Applicati__Perfo__52593CB8">
+      <End Role="Performer" EntitySet="Performer" />
+      <End Role="Application" EntitySet="Application" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Applicati__Prior__5535A963" Association="Self.FK__Applicati__Prior__5535A963">
+      <End Role="Priority_type" EntitySet="Priority_type" />
+      <End Role="Application" EntitySet="Application" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Report__Applicat__60A75C0F" Association="Self.FK__Report__Applicat__60A75C0F">
+      <End Role="Application" EntitySet="Application" />
+      <End Role="Report" EntitySet="Report" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Report__Assistan__4316F928" Association="Self.FK__Report__Assistan__4316F928">
+      <End Role="Assistance" EntitySet="Assistance" />
+      <End Role="Report" EntitySet="Report" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Spare_par__Perfo__47DBAE45" Association="Self.FK__Spare_par__Perfo__47DBAE45">
+      <End Role="Performer" EntitySet="Performer" />
+      <End Role="Spare_part_order" EntitySet="Spare_part_order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Report_Sp__Repor__4AB81AF0" Association="Self.FK__Report_Sp__Repor__4AB81AF0">
+      <End Role="Report" EntitySet="Report" />
+      <End Role="Report_Spare_parts" EntitySet="Report_Spare_parts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Report_Sp__Spare__4CA06362" Association="Self.FK__Report_Sp__Spare__4CA06362">
+      <End Role="Spare_part_order" EntitySet="Spare_part_order" />
+      <End Role="Report_Spare_parts" EntitySet="Report_Spare_parts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

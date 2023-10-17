@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4b9751c8055348d28f97711e05f27f8e" Name="Diagram1">
+        <EntityTypeShape EntityType="RepairShopModel.Application" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RepairShopModel.Application_statuses" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RepairShopModel.Assistance" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RepairShopModel.Client" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RepairShopModel.Equipment_type" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RepairShopModel.Issue" Width="1.5" PointX="0.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RepairShopModel.Performer" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RepairShopModel.Priority_type" Width="1.5" PointX="0.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="RepairShopModel.Report" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RepairShopModel.Report_Spare_parts" Width="1.5" PointX="7.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RepairShopModel.Spare_part_order" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <AssociationConnector Association="RepairShopModel.FK__Applicati__Appli__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="RepairShopModel.FK__Applicati__Clien__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="RepairShopModel.FK__Applicati__Equip__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="RepairShopModel.FK__Applicati__Issue__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="RepairShopModel.FK__Applicati__Perfo__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="RepairShopModel.FK__Applicati__Prior__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="RepairShopModel.FK__Report__Applicat__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="RepairShopModel.FK__Report__Assistan__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="RepairShopModel.FK__Spare_par__Perfo__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="RepairShopModel.FK__Report_Sp__Repor__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="RepairShopModel.FK__Report_Sp__Spare__4CA06362" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
