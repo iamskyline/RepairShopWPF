@@ -10,25 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace RepairShop
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для NewApplicationWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class NewApplicationWindow : Window
     {
-        public MainWindow()
+        public NewApplicationWindow()
         {
             InitializeComponent();
         }
 
-        private void addApplicationBtn_Click(object sender, RoutedEventArgs e)
+        private void createApplicationBtn_Click(object sender, RoutedEventArgs e)
         {
-            NewApplicationWindow window = new NewApplicationWindow();
-            window.Show();
+
         }
     }
 }
