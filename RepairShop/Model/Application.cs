@@ -28,7 +28,7 @@ namespace RepairShop.Model
         public int Client_ID { get; set; }
         public int Priority_type_ID { get; set; }
         public string Equipment_serial_number { get; set; }
-    
+
         public virtual Application_statuses Application_statuses { get; set; }
         public virtual Client Client { get; set; }
         public virtual Equipment_type Equipment_type { get; set; }

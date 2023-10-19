@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RepairShop.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,35 @@ namespace RepairShop
         public MainWindow()
         {
             InitializeComponent();
+            LoadAllApplications();
+            LoadDataToComboBoxes();
+        }
+
+        private void LoadAllApplications()
+        {
+            try
+            {
+                itemsControl.ItemsSource = RepairShopEntities.GetContext().Application.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Не удалось загрузиь список с заявками! {ex.Message}");
+            }
+        }
+
+        private void LoadDataToComboBoxes()
+        {
+            try
+            {
+                var equipmentTypes = RepairShopEntities.GetContext().Equipment_type
+                    .Select(types => types.Type_name).ToList();
+                equipmentTypeComboBox.ItemsSource = equipmentTypes;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Не удалось загрузить ключевые типы для поиска " +
+                    $"по фильтрам!\n{ex.Message}");
+            }
         }
 
         private void addApplicationBtn_Click(object sender, RoutedEventArgs e)

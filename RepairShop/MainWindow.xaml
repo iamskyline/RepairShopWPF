@@ -53,17 +53,25 @@
                             </Grid.ColumnDefinitions>
 
                             <StackPanel>
-                                <!--{Binding QuantitySoldProducts, StringFormat={}Количество продаж за год: {0}}-->
-                                <TextBlock Text="" FontSize="24"/>
-                                <TextBlock Text="Тип оборудования:" FontSize="16"/>
-                                <TextBlock Text="Исполнитель:" FontSize="16"/>
-                                <TextBlock Text="Приоритет:" FontSize="16"/>
+                                <TextBlock Text="{Binding ID, StringFormat={}#{0}}" FontSize="24"/>
+                                <TextBlock Text="{Binding Equipment_type.Type_name, StringFormat={}Тип оборудования: {0}}" FontSize="16"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Performer.First_name, StringFormat={}Исполнитель: {0}}" FontSize="16"/>
+                                    <TextBlock Text="{Binding Performer.Surname_name, StringFormat={} {0}}" FontSize="16"/>
+                                    <TextBlock Text="{Binding Performer.Last_name, StringFormat={} {0}}" FontSize="16"/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding Priority_type.Type_name, StringFormat={}Приоритетность: {0}}" FontSize="16"/>
                             </StackPanel>
 
                             <StackPanel Grid.Column="1">
-                                <TextBlock Text="Проблема:" FontSize="16"/>
-                                <TextBlock Text="Клиент:" FontSize="16"/>
-                                <TextBlock Text="Статус заявки:" FontSize="16"/>
+                                <TextBlock Text="{Binding Issue.Description, StringFormat={}Проблема: {0}}"
+                                           FontSize="16" Margin="0 27 0 0"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Client.First_name, StringFormat={}Клиент: {0}}" FontSize="16"/>
+                                    <TextBlock Text="{Binding Client.Surname_name, StringFormat={} {0}}" FontSize="16"/>
+                                    <TextBlock Text="{Binding Client.Last_name, StringFormat={} {0}}" FontSize="16"/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding Application_statuses.Status_name, StringFormat={}Статус заявки: {0}}" FontSize="16"/>
                             </StackPanel>
                         </Grid>
                     </DataTemplate>
