@@ -15,11 +15,22 @@ namespace RepairShop.Model
     
     public partial class RepairShopEntities : DbContext
     {
+
+        private static RepairShopEntities _data;
         public RepairShopEntities()
             : base("name=RepairShopEntities")
         {
         }
-    
+
+        public static RepairShopEntities GetContext()
+        {
+            if (_data == null)
+            {
+                _data = new RepairShopEntities();
+            }
+            return _data;
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

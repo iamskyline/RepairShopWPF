@@ -41,9 +41,35 @@
                     Click="addApplicationBtn_Click"/>
         </Grid>
 
-        <ListView Grid.Row="1">
-            
-        </ListView>
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto">
+            <ItemsControl x:Name="itemsControl">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel>
+                                <!--{Binding QuantitySoldProducts, StringFormat={}Количество продаж за год: {0}}-->
+                                <TextBlock Text="" FontSize="24"/>
+                                <TextBlock Text="Тип оборудования:" FontSize="16"/>
+                                <TextBlock Text="Исполнитель:" FontSize="16"/>
+                                <TextBlock Text="Приоритет:" FontSize="16"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Text="Проблема:" FontSize="16"/>
+                                <TextBlock Text="Клиент:" FontSize="16"/>
+                                <TextBlock Text="Статус заявки:" FontSize="16"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
         
     </Grid>
 </Window>
