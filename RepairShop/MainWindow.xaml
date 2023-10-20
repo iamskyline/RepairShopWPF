@@ -51,8 +51,17 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
 
-                            <StackPanel>
+                            <Separator Margin="10 5" Height="2"
+                                       Grid.ColumnSpan="2" Grid.Row="0"/>
+                            
+                            <StackPanel Grid.Row="1" Margin="20 0 0 0">
                                 <TextBlock Text="{Binding ID, StringFormat={}#{0}}" FontSize="24"/>
                                 <TextBlock Text="{Binding Equipment_type.Type_name, StringFormat={}Тип оборудования: {0}}" FontSize="16"/>
                                 <StackPanel Orientation="Horizontal">
@@ -63,9 +72,10 @@
                                 <TextBlock Text="{Binding Priority_type.Type_name, StringFormat={}Приоритетность: {0}}" FontSize="16"/>
                             </StackPanel>
 
-                            <StackPanel Grid.Column="1">
+                            <StackPanel Grid.Column="1" Grid.Row="1"
+                                        Margin="0 0 20 0">
                                 <TextBlock Text="{Binding Issue.Description, StringFormat={}Проблема: {0}}"
-                                           FontSize="16" Margin="0 27 0 0"/>
+                                               FontSize="16" Margin="0 27 0 0"/>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="{Binding Client.First_name, StringFormat={}Клиент: {0}}" FontSize="16"/>
                                     <TextBlock Text="{Binding Client.Surname_name, StringFormat={} {0}}" FontSize="16"/>
@@ -73,11 +83,22 @@
                                 </StackPanel>
                                 <TextBlock Text="{Binding Application_statuses.Status_name, StringFormat={}Статус заявки: {0}}" FontSize="16"/>
                             </StackPanel>
+
+                            <Button x:Name="editApplicationBtn"
+                                    Grid.Row="2" Grid.ColumnSpan="2"
+                                    Content="Редактировать"
+                                    Margin="20 10"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Right"
+                                    Click="editApplicationBtn_Click"/>
+                            
+                            <Separator Margin="10 5" Height="2"
+                                       Grid.ColumnSpan="2" Grid.Row="3"/>
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-        
+
     </Grid>
 </Window>

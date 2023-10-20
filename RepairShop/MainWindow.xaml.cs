@@ -61,5 +61,11 @@ namespace RepairShop
             NewApplicationWindow window = new NewApplicationWindow();
             window.Show();
         }
+
+        private void editApplicationBtn_Click(object sender, RoutedEventArgs e)
+        {
+            EditApplcationWindow window = new EditApplcationWindow();
+            window.Show();
+        }
     }
 }

@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Application = RepairShop.Model.Application;
 
 namespace RepairShop
 {
@@ -49,6 +50,25 @@ namespace RepairShop
         private void createApplicationBtn_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void CreateNewApplication()
+        {
+            using (var context = new RepairShopEntities())
+            {
+                var newApplication = new Application
+                {
+                    /*ID = 10,
+                    Equipment_type_ID = equipmentComboBox.SelectedIndex,
+                    Application_status_ID = statusComboBox.SelectedIndex,
+                    Performer_ID = performerComboBox.SelectedIndex,
+                    Issue = issueDescriptionTextBox.Text,
+                    Client_ID = clientComboBox.SelectedIndex,
+                    Priority_type_ID = priorityComboBox.SelectedIndex,
+                    Equipment_serial_number = serialNumberTextBox.Text,
+                    Malfunction_type_ID = malfunctionComboBox.SelectedIndex*/
+                };
+            }
         }
     }
 }
