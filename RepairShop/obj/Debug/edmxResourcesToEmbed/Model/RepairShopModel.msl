@@ -12,6 +12,7 @@
           <ScalarProperty Name="Client_ID" ColumnName="Client_ID" />
           <ScalarProperty Name="Priority_type_ID" ColumnName="Priority_type_ID" />
           <ScalarProperty Name="Equipment_serial_number" ColumnName="Equipment_serial_number" />
+          <ScalarProperty Name="Malfunction_type_ID" ColumnName="Malfunction_type_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -56,6 +57,14 @@
         <MappingFragment StoreEntitySet="Issue">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Malfunction_type">
+      <EntityTypeMapping TypeName="RepairShopModel.Malfunction_type">
+        <MappingFragment StoreEntitySet="Malfunction_type">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Type_name" ColumnName="Type_name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

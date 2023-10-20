@@ -15,7 +15,6 @@ namespace RepairShop.Model
     
     public partial class RepairShopEntities : DbContext
     {
-
         private static RepairShopEntities _data;
         public RepairShopEntities()
             : base("name=RepairShopEntities")
@@ -42,6 +41,7 @@ namespace RepairShop.Model
         public virtual DbSet<Client> Client { get; set; }
         public virtual DbSet<Equipment_type> Equipment_type { get; set; }
         public virtual DbSet<Issue> Issue { get; set; }
+        public virtual DbSet<Malfunction_type> Malfunction_type { get; set; }
         public virtual DbSet<Performer> Performer { get; set; }
         public virtual DbSet<Priority_type> Priority_type { get; set; }
         public virtual DbSet<Report> Report { get; set; }

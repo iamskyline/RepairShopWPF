@@ -12,10 +12,12 @@
     <Property Name="Client_ID" Type="Int32" Nullable="false" />
     <Property Name="Priority_type_ID" Type="Int32" Nullable="false" />
     <Property Name="Equipment_serial_number" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Malfunction_type_ID" Type="Int32" />
     <NavigationProperty Name="Application_statuses" Relationship="Self.FK__Applicati__Appli__5165187F" FromRole="Application" ToRole="Application_statuses" />
     <NavigationProperty Name="Client" Relationship="Self.FK__Applicati__Clien__5441852A" FromRole="Application" ToRole="Client" />
     <NavigationProperty Name="Equipment_type" Relationship="Self.FK__Applicati__Equip__4F7CD00D" FromRole="Application" ToRole="Equipment_type" />
     <NavigationProperty Name="Issue" Relationship="Self.FK__Applicati__Issue__534D60F1" FromRole="Application" ToRole="Issue" />
+    <NavigationProperty Name="Malfunction_type" Relationship="Self.FK__Applicati__Malfu__6E01572D" FromRole="Application" ToRole="Malfunction_type" />
     <NavigationProperty Name="Performer" Relationship="Self.FK__Applicati__Perfo__52593CB8" FromRole="Application" ToRole="Performer" />
     <NavigationProperty Name="Priority_type" Relationship="Self.FK__Applicati__Prior__5535A963" FromRole="Application" ToRole="Priority_type" />
     <NavigationProperty Name="Report" Relationship="Self.FK__Report__Applicat__60A75C0F" FromRole="Application" ToRole="Report" />
@@ -63,6 +65,14 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Description" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Application" Relationship="Self.FK__Applicati__Issue__534D60F1" FromRole="Issue" ToRole="Application" />
+  </EntityType>
+  <EntityType Name="Malfunction_type">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Application" Relationship="Self.FK__Applicati__Malfu__6E01572D" FromRole="Malfunction_type" ToRole="Application" />
   </EntityType>
   <EntityType Name="Performer">
     <Key>
@@ -172,6 +182,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Applicati__Malfu__6E01572D">
+    <End Role="Malfunction_type" Type="Self.Malfunction_type" Multiplicity="0..1" />
+    <End Role="Application" Type="Self.Application" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Malfunction_type">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Application">
+        <PropertyRef Name="Malfunction_type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Applicati__Perfo__52593CB8">
     <End Role="Performer" Type="Self.Performer" Multiplicity="1" />
     <End Role="Application" Type="Self.Application" Multiplicity="*" />
@@ -263,6 +285,7 @@
     <EntitySet Name="Client" EntityType="Self.Client" />
     <EntitySet Name="Equipment_type" EntityType="Self.Equipment_type" />
     <EntitySet Name="Issue" EntityType="Self.Issue" />
+    <EntitySet Name="Malfunction_type" EntityType="Self.Malfunction_type" />
     <EntitySet Name="Performer" EntityType="Self.Performer" />
     <EntitySet Name="Priority_type" EntityType="Self.Priority_type" />
     <EntitySet Name="Report" EntityType="Self.Report" />
@@ -282,6 +305,10 @@
     </AssociationSet>
     <AssociationSet Name="FK__Applicati__Issue__534D60F1" Association="Self.FK__Applicati__Issue__534D60F1">
       <End Role="Issue" EntitySet="Issue" />
+      <End Role="Application" EntitySet="Application" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Applicati__Malfu__6E01572D" Association="Self.FK__Applicati__Malfu__6E01572D">
+      <End Role="Malfunction_type" EntitySet="Malfunction_type" />
       <End Role="Application" EntitySet="Application" />
     </AssociationSet>
     <AssociationSet Name="FK__Applicati__Perfo__52593CB8" Association="Self.FK__Applicati__Perfo__52593CB8">

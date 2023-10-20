@@ -12,32 +12,18 @@ namespace RepairShop.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Application
+    public partial class Malfunction_type
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Application()
+        public Malfunction_type()
         {
-            this.Report = new HashSet<Report>();
+            this.Application = new HashSet<Application>();
         }
     
         public int ID { get; set; }
-        public int Equipment_type_ID { get; set; }
-        public int Application_status_ID { get; set; }
-        public int Performer_ID { get; set; }
-        public int Issue_ID { get; set; }
-        public int Client_ID { get; set; }
-        public int Priority_type_ID { get; set; }
-        public string Equipment_serial_number { get; set; }
-        public Nullable<int> Malfunction_type_ID { get; set; }
+        public string Type_name { get; set; }
     
-        public virtual Application_statuses Application_statuses { get; set; }
-        public virtual Client Client { get; set; }
-        public virtual Equipment_type Equipment_type { get; set; }
-        public virtual Issue Issue { get; set; }
-        public virtual Malfunction_type Malfunction_type { get; set; }
-        public virtual Performer Performer { get; set; }
-        public virtual Priority_type Priority_type { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Report> Report { get; set; }
+        public virtual ICollection<Application> Application { get; set; }
     }
 }

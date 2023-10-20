@@ -44,9 +44,10 @@ namespace RepairShop
         {
             try
             {
-                var equipmentTypes = RepairShopEntities.GetContext().Equipment_type
-                    .Select(types => types.Type_name).ToList();
-                equipmentTypeComboBox.ItemsSource = equipmentTypes;
+                equipmentTypeComboBox.ItemsSource = RepairShopEntities.GetContext()
+                    .Equipment_type.Select(types => types.Type_name).ToList();
+                malfunctionTypeComboBox.ItemsSource = RepairShopEntities
+                    .GetContext().Malfunction_type.Select(type => type.Type_name).ToList();
             }
             catch (Exception ex)
             {

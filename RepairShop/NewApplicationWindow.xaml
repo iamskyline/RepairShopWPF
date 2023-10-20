@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RepairShop"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="Новая заявка" Height="500" Width="600"
         MinHeight="500" MinWidth="500" MaxHeight="600" MaxWidth="800">
@@ -18,27 +19,21 @@
             <TextBlock Text="Добавление заявки"
                        FontSize="20" TextAlignment="Center"
                        Margin="0 20 0 10"/>
-            <TextBlock Text="Тип оборудования:"
-                       Margin="30 20 30 0"/>
             <ComboBox x:Name="equipmentComboBox"
-                     Margin="30 5 30 0"/>
-            <TextBlock Text="Тип неисправности:"
-                       Margin="30 20 30 0"/>
+                      Margin="30 5 30 0"
+                      materialDesign:HintAssist.Hint="Тип оборудования"/>
             <ComboBox x:Name="malfunctionComboBox"
-                      Margin="30 5 30 0"/>
-            <TextBlock Text="Клиент:"
-                       Margin="30 20 30 0"/>
+                      Margin="30 15 30 0"
+                      materialDesign:HintAssist.Hint="Тип неисправности"/>
             <ComboBox x:Name="clientComboBox"
-                     Margin="30 5 30 0"/>
-            <TextBlock Text="Статус заявки"
-                       Margin="30 20 30 0"/>
+                      Margin="30 15 30 0"
+                      materialDesign:HintAssist.Hint="Телефон клиента"/>
             <ComboBox x:Name="statusComboBox"
-                     Margin="30 5 30 0"/>
-            <TextBlock Text="Описание проблемы:"
-                       Margin="30 20 30 0"/>
+                      Margin="30 15 30 0"
+                      materialDesign:HintAssist.Hint="Статус заявки"/>
             <TextBox x:Name="issueDescriptionTextBox"
-                     
-                     Margin="30 5 30 0"/>
+                     Margin="30 15 30 0"
+                     materialDesign:HintAssist.Hint="Описание проблемы"/>
             <Button x:Name="createApplicationBtn"
                     Content="Добавить новую заявку"
                     Margin="30 20"
