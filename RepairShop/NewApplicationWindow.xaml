@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:RepairShop"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Новая заявка" Height="500" Width="600"
-        MinHeight="500" MinWidth="500" MaxHeight="600" MaxWidth="800">
+        Title="Новая заявка" Height="550" Width="600"
+        MinHeight="550" MinWidth="500" MaxHeight="600" MaxWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.2*"/>
@@ -47,6 +47,10 @@
                     Content="Добавить новую заявку"
                     Margin="30 20"
                     Click="createApplicationBtn_Click"/>
+            <Button x:Name="getBackBtn"
+                    Content="Вернуться на главную"
+                    Margin="30 0"
+                    Click="getBackBtn_Click"/>
         </StackPanel>
     </Grid>
 </Window>
