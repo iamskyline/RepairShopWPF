@@ -4,10 +4,77 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RepairShop"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Редактирование заявки" Height="500" Width="600"
-        MinHeight="500" MinWidth="500" MaxHeight="600" MaxWidth="800">
+        Title="Редактирование заявки" Height="550" Width="600"
+        MinHeight="550" MinWidth="500" MaxHeight="600" MaxWidth="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="0.03*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.8*"/>
+            <ColumnDefinition Width="0.1*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <TextBlock Text="Редактирование заявки" FontSize="26"
+               Margin="20" HorizontalAlignment="Center"/>
+            <Separator Margin="20 0" Height="2" Grid.ColumnSpan="3"/>
+        </StackPanel>
+
+        <StackPanel Margin="20 10" Grid.Row="1" Grid.Column="1">
+            <TextBlock Text="{Binding ID, StringFormat={}Заявка номер: #{0}}"
+                       FontSize="24" Margin="0 0 0 10"
+                       HorizontalAlignment="Center"/>
+            <ComboBox x:Name="equipmentComboBox"
+                      Margin="50 0 50 10"
+                      materialDesign:HintAssist.Hint="Выбрать тип оборудования"/>
+            <ComboBox x:Name="malfunctionComboBox" Margin="50 0 50 10"
+                      materialDesign:HintAssist.Hint="Выбрать тип неисправности"/>
+            <StackPanel Orientation="Horizontal"
+                      Margin="50 0 50 10">
+                <TextBlock Text="Мастер:" VerticalAlignment="Center"/>
+                <ComboBox x:Name="performerComboBox" Margin="20 0 0 0"
+                          materialDesign:HintAssist.Hint="Выбрать мастера"
+                          MinWidth="277"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Margin="50 0 50 10">
+                <TextBlock Text="Клиент:" VerticalAlignment="Center"/>
+                <ComboBox x:Name="clientComboBox" Margin="20 0 0 0"
+                          materialDesign:HintAssist.Hint="Выбрать клиента"
+                          MinWidth="280"/>
+            </StackPanel>
+            <ComboBox x:Name="priorityComboBox" Margin="50 0 50 10"
+                      materialDesign:HintAssist.Hint="Выбрать приоритет заявки"/>
+            <ComboBox x:Name="statusComboBox" Margin="50 0 50 10"
+                      materialDesign:HintAssist.Hint="Выбрать статус заявки"/>
+            <TextBox x:Name="issueDescriptionTextBox"
+                     Text="{Binding Issue.Description}"
+                     Margin="50 0 50 10"
+                     materialDesign:HintAssist.Hint="Ввести описание проблемы"/>
+            <TextBox x:Name="serialNumberDescriptionTextBox"
+                     Text="{Binding Equipment_serial_number}"
+                     Margin="50 0 50 10"
+                     materialDesign:HintAssist.Hint="Ввести серийный номер оборудования"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="1" 
+                    Margin="20 0" VerticalAlignment="Center">
+            <Separator/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="1"
+                    Orientation="Horizontal">
+            <Button x:Name="saveChangesBtn"
+                    Content="Сохранить изменения"
+                    Margin="20 0"
+                    Click="saveChangesBtn_Click"/>
+        </StackPanel>
     </Grid>
 </Window>

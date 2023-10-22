@@ -33,5 +33,3 @@ X:\Шарага\4 курс\МДК.02.01 ТРПО\Демонстрационны�
 X:\Шарага\4 курс\МДК.02.01 ТРПО\Демонстрационный экзамен - 2024\RepairShop\RepairShop\obj\Debug\NewApplicationWindow.baml
 X:\Шарага\4 курс\МДК.02.01 ТРПО\Демонстрационный экзамен - 2024\RepairShop\RepairShop\obj\Debug\EditApplcationWindow.g.cs
 X:\Шарага\4 курс\МДК.02.01 ТРПО\Демонстрационный экзамен - 2024\RepairShop\RepairShop\obj\Debug\EditApplcationWindow.baml
-X:\Шарага\4 курс\МДК.02.01 ТРПО\Демонстрационный экзамен - 2024\RepairShop\RepairShop\obj\Debug\EditApplicationWindow.g.cs
-X:\Шарага\4 курс\МДК.02.01 ТРПО\Демонстрационный экзамен - 2024\RepairShop\RepairShop\obj\Debug\EditApplicationWindow.baml

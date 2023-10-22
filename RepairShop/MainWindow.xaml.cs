@@ -32,11 +32,13 @@ namespace RepairShop
         {
             try
             {
-                itemsControl.ItemsSource = RepairShopEntities.GetContext().Application.ToList();
+                itemsControl.ItemsSource = RepairShopEntities.GetContext()
+                    .Application.ToList();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Не удалось загрузиь список с заявками! {ex.Message}");
+                MessageBox.Show($"Не удалось загрузиь список с " +
+                    $"заявками! {ex.Message}");
             }
         }
 
@@ -44,10 +46,16 @@ namespace RepairShop
         {
             try
             {
-                equipmentTypeComboBox.ItemsSource = RepairShopEntities.GetContext()
+                var equipmentTypes = RepairShopEntities.GetContext()
                     .Equipment_type.Select(types => types.Type_name).ToList();
-                malfunctionTypeComboBox.ItemsSource = RepairShopEntities
+                equipmentTypes.Insert(0, "Все типы");
+                equipmentTypeComboBox.ItemsSource = equipmentTypes;
+                var malfunctionTypes = RepairShopEntities
                     .GetContext().Malfunction_type.Select(type => type.Type_name).ToList();
+                malfunctionTypes.Insert(0, "Все типы");
+                malfunctionTypeComboBox.ItemsSource = malfunctionTypes;
+                equipmentTypeComboBox.SelectedIndex = 0;
+                malfunctionTypeComboBox.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -64,8 +72,47 @@ namespace RepairShop
 
         private void editApplicationBtn_Click(object sender, RoutedEventArgs e)
         {
-            EditApplcationWindow window = new EditApplcationWindow();
+            EditApplcationWindow window = new EditApplcationWindow((sender as Button)
+                .DataContext as Model.Application);
             window.Show();
+        }
+
+        private void searchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SortApplications();
+        }
+
+        private void equipmentTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SortApplications();
+        }
+
+        private void malfunctionTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SortApplications();
+        }
+
+        private void SortApplications()
+        {
+            var applications = RepairShopEntities.GetContext()
+                    .Application.ToList();
+            if (equipmentTypeComboBox.SelectedIndex > 0)
+            {
+                string selectedEquipment = equipmentTypeComboBox.SelectedItem as string;
+                applications = applications.Where(a => a.Equipment_type.Type_name
+                    == selectedEquipment).ToList();
+            }
+            if (malfunctionTypeComboBox.SelectedIndex > 0)
+            {
+                string selectedMalfunction = malfunctionTypeComboBox.SelectedItem as string;
+                applications = applications.Where(m => m.Malfunction_type.Type_name == selectedMalfunction).ToList();
+            }
+            if (searchTextBox.Text.Length > 0)
+            {
+                applications = applications.Where(a => a.Equipment_serial_number
+                .ToLower().Contains(searchTextBox.Text.ToLower())).ToList();
+            }
+            itemsControl.ItemsSource = applications;
         }
     }
 }
