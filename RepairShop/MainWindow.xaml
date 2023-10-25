@@ -6,12 +6,13 @@
         xmlns:local="clr-namespace:RepairShop"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Главная страница" Height="450" Width="800"
-        MinHeight="450" MinWidth="800"
+        Title="Главная страница" Height="450" Width="825"
+        MinHeight="450" MinWidth="825"
         MaxHeight="650" MaxWidth="1000">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="0.07*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -44,7 +45,12 @@
                     Click="addApplicationBtn_Click"/>
         </Grid>
 
-        <ScrollViewer Grid.Row="1"
+        <TextBlock x:Name="statisticsTextBox"
+                   Grid.Row="1" HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="14"/>
+
+        <ScrollViewer Grid.Row="2"
                       VerticalScrollBarVisibility="Auto">
             <ItemsControl x:Name="itemsControl">
                 <ItemsControl.ItemTemplate>
@@ -60,6 +66,7 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
+                                <RowDefinition/>
                             </Grid.RowDefinitions>
 
                             <Separator Margin="10 5" Height="2"
@@ -68,12 +75,17 @@
                             <StackPanel Grid.Row="1" Margin="20 0 0 0">
                                 <TextBlock Text="{Binding ID, StringFormat={}#{0}}" FontSize="24"/>
                                 <TextBlock Text="{Binding Equipment_type.Type_name, StringFormat={}Тип оборудования: {0}}" FontSize="16"/>
-                                <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal" 
+                                            Margin="0 0 10 0">
                                     <TextBlock Text="{Binding Performer.Surname_name, StringFormat={}Исполнитель: {0}}" FontSize="16"/>
                                     <TextBlock Text="{Binding Performer.First_name, StringFormat={} {0}}" FontSize="16"/>
                                     <TextBlock Text="{Binding Performer.Last_name, StringFormat={} {0}}" FontSize="16"/>
                                 </StackPanel>
-                                <TextBlock Text="{Binding Priority_type.Type_name, StringFormat={}Приоритетность: {0}}" FontSize="16"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Client.Surname_name, StringFormat={}Клиент: {0}}" FontSize="16"/>
+                                    <TextBlock Text="{Binding Client.First_name, StringFormat={} {0}}" FontSize="16"/>
+                                    <TextBlock Text="{Binding Client.Last_name, StringFormat={} {0}}" FontSize="16"/>
+                                </StackPanel>
                             </StackPanel>
 
                             <StackPanel Grid.Column="1" Grid.Row="1"
@@ -82,11 +94,7 @@
                                            FontSize="16" Margin="0 10 0 0"/>
                                 <TextBlock Text="{Binding Malfunction_type.Type_name, StringFormat={}Проблема: {0}}"
                                                FontSize="16" Margin="0 0 0 0"/>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Client.Surname_name, StringFormat={}Клиент: {0}}" FontSize="16"/>
-                                    <TextBlock Text="{Binding Client.First_name, StringFormat={} {0}}" FontSize="16"/>
-                                    <TextBlock Text="{Binding Client.Last_name, StringFormat={} {0}}" FontSize="16"/>
-                                </StackPanel>
+                                <TextBlock Text="{Binding Priority_type.Type_name, StringFormat={}Приоритетность: {0}}" FontSize="16"/>
                                 <TextBlock Text="{Binding Application_statuses.Status_name, StringFormat={}Статус заявки: {0}}" FontSize="16"/>
                             </StackPanel>
 
@@ -96,8 +104,20 @@
                                            Margin="20 0 0 0"/>
                             </StackPanel>
 
+                            <Grid Grid.Row="3" Grid.ColumnSpan="2" Margin="20 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.5*"/>
+                                    <ColumnDefinition Width="0.5*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" FontSize="16"
+                                           Text="{Binding Date_added, StringFormat={}Заявка добавлена: {0}}"/>
+                                <TextBlock Grid.Column="1" FontSize="16"
+                                           Text="{Binding Planned_end_date, StringFormat={}Планируемое завершение: {0}}"/>
+                            </Grid>
+
                             <Button x:Name="editApplicationBtn"
-                                    Grid.Row="3" Grid.ColumnSpan="2"
+                                    Grid.Row="4" Grid.ColumnSpan="2"
                                     Content="Редактировать"
                                     Margin="20 10"
                                     VerticalAlignment="Center"
@@ -105,7 +125,7 @@
                                     Click="editApplicationBtn_Click"/>
                             
                             <Separator Margin="10 5" Height="2"
-                                       Grid.ColumnSpan="2" Grid.Row="4"/>
+                                       Grid.ColumnSpan="2" Grid.Row="5"/>
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

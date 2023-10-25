@@ -13,6 +13,8 @@
           <ScalarProperty Name="Priority_type_ID" ColumnName="Priority_type_ID" />
           <ScalarProperty Name="Equipment_serial_number" ColumnName="Equipment_serial_number" />
           <ScalarProperty Name="Malfunction_type_ID" ColumnName="Malfunction_type_ID" />
+          <ScalarProperty Name="Date_added" ColumnName="Date_added" />
+          <ScalarProperty Name="Planned_end_date" ColumnName="Planned_end_date" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

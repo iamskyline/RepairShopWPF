@@ -1,6 +1,7 @@
 ﻿using RepairShop.Model;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -72,6 +73,15 @@ namespace RepairShop
                         var client = RepairShopEntities.GetContext().Client.FirstOrDefault(c => c.Tel == clientComboBox.Text);
                         var priotity = RepairShopEntities.GetContext().Priority_type.FirstOrDefault(p => p.Type_name == priorityComboBox.Text);
                         var malfunction = RepairShopEntities.GetContext().Malfunction_type.FirstOrDefault(m => m.Type_name == malfunctionComboBox.Text);
+                        DateTime date = DateTime.Now;
+                        string dateTimeString = dateTimeTextBox.Text;
+                        if (DateTime.TryParseExact(dateTimeString, "dd.MM.yyyy HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime parsedDateTime))
+                            date = parsedDateTime;
+                        else
+                        {
+                            MessageBox.Show("Введена некорректная дата и/или время. Пожалуйста, введите в формате 'гг.мм.дд чч.мм'.");
+                            return;
+                        }
 
                         var newApplication = new Application
                         {
@@ -85,7 +95,9 @@ namespace RepairShop
                             Client_ID = client.ID,
                             Priority_type_ID = priotity.ID,
                             Equipment_serial_number = serialNumberTextBox.Text,
-                            Malfunction_type_ID = malfunction.ID
+                            Malfunction_type_ID = malfunction.ID,
+                            Date_added = DateTime.Now,
+                            Planned_end_date = date,
                         };
                         context.Application.Add(newApplication);
                         context.SaveChanges();

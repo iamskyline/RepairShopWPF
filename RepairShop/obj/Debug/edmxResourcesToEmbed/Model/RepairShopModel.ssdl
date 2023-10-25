@@ -12,7 +12,9 @@
     <Property Name="Client_ID" Type="int" Nullable="false" />
     <Property Name="Priority_type_ID" Type="int" Nullable="false" />
     <Property Name="Equipment_serial_number" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="Malfunction_type_ID" Type="int" />
+    <Property Name="Malfunction_type_ID" Type="int" Nullable="false" />
+    <Property Name="Date_added" Type="smalldatetime" Nullable="false" />
+    <Property Name="Planned_end_date" Type="smalldatetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Application_statuses">
     <Key>
@@ -159,7 +161,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__Applicati__Malfu__6E01572D">
-    <End Role="Malfunction_type" Type="Self.Malfunction_type" Multiplicity="0..1" />
+    <End Role="Malfunction_type" Type="Self.Malfunction_type" Multiplicity="1" />
     <End Role="Application" Type="Self.Application" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Malfunction_type">

@@ -12,7 +12,9 @@
     <Property Name="Client_ID" Type="Int32" Nullable="false" />
     <Property Name="Priority_type_ID" Type="Int32" Nullable="false" />
     <Property Name="Equipment_serial_number" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Malfunction_type_ID" Type="Int32" />
+    <Property Name="Malfunction_type_ID" Type="Int32" Nullable="false" />
+    <Property Name="Date_added" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Planned_end_date" Type="DateTime" Nullable="false" Precision="0" />
     <NavigationProperty Name="Application_statuses" Relationship="Self.FK__Applicati__Appli__5165187F" FromRole="Application" ToRole="Application_statuses" />
     <NavigationProperty Name="Client" Relationship="Self.FK__Applicati__Clien__5441852A" FromRole="Application" ToRole="Client" />
     <NavigationProperty Name="Equipment_type" Relationship="Self.FK__Applicati__Equip__4F7CD00D" FromRole="Application" ToRole="Equipment_type" />
@@ -183,7 +185,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__Applicati__Malfu__6E01572D">
-    <End Role="Malfunction_type" Type="Self.Malfunction_type" Multiplicity="0..1" />
+    <End Role="Malfunction_type" Type="Self.Malfunction_type" Multiplicity="1" />
     <End Role="Application" Type="Self.Application" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Malfunction_type">

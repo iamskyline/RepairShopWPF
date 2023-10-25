@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bf0bc8d3f7524c6cb0b7c38fdf34ab6f" Name="Diagram1">
-        <EntityTypeShape EntityType="RepairShopModel.Application" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+      <Diagram DiagramId="b54e70afcd8c4551a0563b40ab4fb8b6" Name="Diagram1">
+        <EntityTypeShape EntityType="RepairShopModel.Application" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="RepairShopModel.Application_statuses" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="RepairShopModel.Assistance" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="RepairShopModel.Client" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
@@ -15,8 +15,8 @@
         <EntityTypeShape EntityType="RepairShopModel.Performer" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="RepairShopModel.Priority_type" Width="1.5" PointX="0.75" PointY="20.375" IsExpanded="true" />
         <EntityTypeShape EntityType="RepairShopModel.Report" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="RepairShopModel.Report_Spare_parts" Width="1.5" PointX="7.5" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="RepairShopModel.Spare_part_order" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RepairShopModel.Report_Spare_parts" Width="1.5" PointX="7.5" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RepairShopModel.Spare_part_order" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
         <AssociationConnector Association="RepairShopModel.FK__Applicati__Appli__5165187F" ManuallyRouted="false" />
         <AssociationConnector Association="RepairShopModel.FK__Applicati__Clien__5441852A" ManuallyRouted="false" />
         <AssociationConnector Association="RepairShopModel.FK__Applicati__Equip__4F7CD00D" ManuallyRouted="false" />

@@ -72,7 +72,7 @@ namespace RepairShop
 
         private void editApplicationBtn_Click(object sender, RoutedEventArgs e)
         {
-            EditApplcationWindow window = new EditApplcationWindow((sender as Button)
+            EditApplicationWindow window = new EditApplicationWindow((sender as Button)
                 .DataContext as Model.Application);
             window.Show();
         }
@@ -90,6 +90,7 @@ namespace RepairShop
         private void malfunctionTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SortApplications();
+            ShowStatisticsMalfunction();
         }
 
         private void SortApplications()
@@ -113,6 +114,24 @@ namespace RepairShop
                 .ToLower().Contains(searchTextBox.Text.ToLower())).ToList();
             }
             itemsControl.ItemsSource = applications;
+        }
+
+        private void ShowStatisticsMalfunction()
+        {
+            var malfunctionIndexType = malfunctionTypeComboBox.SelectedIndex;
+            if (malfunctionIndexType > 0)
+            {
+                string malfunctionType = malfunctionTypeComboBox.SelectedItem as string;
+                int malfunctionId = RepairShopEntities.GetContext().Malfunction_type
+                    .Where(m => m.Type_name == malfunctionType)
+                    .Select(m => m.ID).FirstOrDefault();
+                int quantity = RepairShopEntities.GetContext().Application
+                    .Where(a => a.Malfunction_type_ID == malfunctionId).Count();
+                statisticsTextBox.Text = $"ВСЕГО заявок с типом " +
+                    $"неисправности \"{malfunctionType}\" было найдено {quantity} шт.";
+            }
+            else
+                statisticsTextBox.Text = string.Empty;
         }
     }
 }

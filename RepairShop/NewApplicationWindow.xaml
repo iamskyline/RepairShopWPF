@@ -43,6 +43,9 @@
             <TextBox x:Name="serialNumberTextBox"
                      Margin="30 15 30 0"
                      materialDesign:HintAssist.Hint="Серийный номер оборудования"/>
+            <TextBox x:Name="dateTimeTextBox"
+                     Margin="30 15 30 0"
+                     materialDesign:HintAssist.Hint="Завершение работ (дд.мм.гггг чч.мм)"/>
             <Button x:Name="createApplicationBtn"
                     Content="Добавить новую заявку"
                     Margin="30 20"
